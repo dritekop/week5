@@ -19,13 +19,6 @@ def check_numeric(value: int):
     return value
 
 
-def check_attack(value: int):
-    dmg = check_numeric(value)
-    dmg *= -1
-    if dmg > 0:
-        print('Are you healer? OK!')
-
-
 class UnitIsDeadException(Exception):
     pass
 
@@ -55,6 +48,8 @@ class Unit:
 
     @hp.setter
     def hp(self, value) -> None:
+        if value > self.max_hp:
+            value = self.max_hp
         self._hp = check_numeric(value)
 
     def __str__(self) -> str:
@@ -66,6 +61,11 @@ class Unit:
             raise UnitIsDeadException()
 
     def add_hp(self, value: int) -> None:
+        self.__ensure_is_alive()
+        if self.hp + value > self.max_hp:
+            print('Overdose...')
+            self.hp = 0
+            raise UnitIsDeadException()
         self.hp += value
 
     def take_damage(self, value: int) -> None:
@@ -80,37 +80,15 @@ class Unit:
             raise TypeError(f'This guy is ugly {other.__class__.__name__}, but not {self.__class__.__name__} ')
 
     def attack(self, other: Any) -> None:
-        other.__ensure_is_alive()
         self.__ensure_is_alive()
         self.__check_type(other)
         other.take_damage(self.damage)
-        self.counter_attack(other)
+        other.counter_attack(self)
 
     def counter_attack(self, other):
-        self.__ensure_is_alive()
-        counter_dmg = other.damage / 2
-        self.take_damage(counter_dmg)
+        counter_dmg = int(self.damage / 2)
+        other.take_damage(counter_dmg)
 
 
 if __name__ == '__main__':  # pragma: no cover
-    unit = Unit('SoLdIeR', 100, 15)
-    print(unit)
-
-    inut = Unit('Regurel', 45, 12)
-    print(inut)
-    print()
-
-    inut.attack(unit)
-    print(unit)
-    print(inut)
-    print()
-
-    try:
-        for i in range(4):
-            unit.attack(inut)
-            print(unit)
-            print(inut)
-            print()
-    except UnitIsDeadException:
-        print(unit)
-        print(inut)
+    print('test')

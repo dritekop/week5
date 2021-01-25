@@ -1,6 +1,6 @@
 import pytest
 
-from point.point import Point
+from src.point.point import Point
 
 
 @pytest.mark.parametrize('x, y', [
