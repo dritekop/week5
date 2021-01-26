@@ -25,7 +25,7 @@ def test_gun_construction(name, value):
     assert gun.capacity == value
     assert gun.amount == value
     assert gun.total_shots == 0
-    assert gun.is_ready == False
+    assert not gun.is_ready
 
 
 def test_shoot_and_reload():

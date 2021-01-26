@@ -1,6 +1,3 @@
-import src.car.car
-
-
 def check_numeric(value) -> int:
     if not isinstance(value, int):
         raise TypeError(f'Value should have integer type')
@@ -73,16 +70,4 @@ class Gun:
 
 
 if __name__ == '__main__':  # pragma: no cover
-    colt = Gun('Colt', 10)
-    print(colt)
-    colt.prepare()
-    print(colt)
-    colt.shoot()
-    print(colt)
-    try:
-        for i in range(10):
-            colt.prepare()
-            colt.shoot()
-            print(colt)
-    except ValueError:
-        print(colt)
+    print('no cover')

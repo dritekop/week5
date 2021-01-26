@@ -40,3 +40,7 @@ class Point:
     def distance(self, other: Any) -> float:
         self.__check_type(other)
         return hypot(self.x - other.x, self.y - other.y)
+
+
+if __name__ == '__main__':  # pragma: no cover
+    print('test')
