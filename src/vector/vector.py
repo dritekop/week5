@@ -3,7 +3,7 @@ from typing import Any
 
 
 class Vector:
-    def __init__(self, x: float = 0.0, y: float = 0.0):
+    def __init__(self, x: float = 0.0, y: float = 0.0) -> None:
         self._a = float(x)
         self._b = float(y)
 
