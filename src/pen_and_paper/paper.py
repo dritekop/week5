@@ -37,6 +37,4 @@ class Paper:
 
 
 if __name__ == '__main__':  # pragma: no cover
-    paper = Paper(5)
-    # paper.add_content('Hello!')
-    print(paper)
+    print('no cover')

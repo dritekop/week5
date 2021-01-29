@@ -27,8 +27,4 @@ class Pen:
 
 
 if __name__ == '__main__':  # pragma: no cover
-    pen = Pen(1)
-    paper_one = Paper(5)
-    pen.write('Hello!', paper_one)
-    print(paper_one)
-    print(pen)
+    print('no cover')
